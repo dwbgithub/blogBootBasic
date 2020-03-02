@@ -1,10 +1,12 @@
 package com.dwb.blog.controller.user;
 
+import com.dwb.blog.config.MyBlogProperties;
 import com.dwb.blog.controller.common.model.ControllerBaseResp;
 import com.dwb.blog.controller.common.model.Result;
 import com.dwb.blog.controller.user.req.UserReq;
 import com.dwb.blog.controller.user.resp.UserResp;
 import com.dwb.blog.controller.user.vo.UserVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,5 +27,12 @@ public class user {
     public Result profile(){
         return new Result();
     }
+    @Autowired
+    MyBlogProperties myBlogProperties;
 
+    @RequestMapping(name = "index",value = "/index",method = RequestMethod.GET)
+    public Result index(){
+        System.out.println("myBlogProperties:"+myBlogProperties.myBlogName);
+        return new Result();
+    }
 }
